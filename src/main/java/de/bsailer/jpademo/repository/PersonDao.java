@@ -10,11 +10,7 @@ import de.bsailer.jpademo.domain.Person;
 
 public class PersonDao {
 
-  private final EntityManager entityManager;
-
-  public PersonDao() {
-    entityManager = PersistenceManager.INSTANCE.getEntityManager();
-  }
+  private EntityManager entityManager;
 
   public List<Person> findByName(final String name) {
     final CriteriaBuilder cb = entityManager.getCriteriaBuilder();
@@ -27,7 +23,6 @@ public class PersonDao {
 
   public void finalizeEntityManager() {
     entityManager.close();
-    PersistenceManager.INSTANCE.close();
   }
 
   public Person findPerson(final int personId) {
@@ -38,6 +33,10 @@ public class PersonDao {
     entityManager.getTransaction().begin();
     entityManager.persist(person);
     entityManager.getTransaction().commit();
+  }
+
+  public void initializeEntityManager() {
+    entityManager = PersistenceManager.INSTANCE.getEntityManager();
   }
 
 }

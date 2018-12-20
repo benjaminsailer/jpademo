@@ -5,15 +5,14 @@ import de.bsailer.jpademo.domain.Adresse;
 
 public class AdresseDao {
 
-  private final EntityManager entityManager;
+  private EntityManager entityManager;
 
-  public AdresseDao() {
+  public void initializeEntityManager() {
     entityManager = PersistenceManager.INSTANCE.getEntityManager();
   }
 
   public void finalizeEntityManager() {
     entityManager.close();
-    PersistenceManager.INSTANCE.close();
   }
 
   public void storeAdresse(final Adresse adresse) {

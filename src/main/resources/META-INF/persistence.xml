@@ -6,8 +6,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	<persistence-unit name="jpademo"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>de.sailer.jpademo.domain.Person</class>
-		<class>de.sailer.jpademo.domain.Adresse</class>
+		<class>de.bsailer.jpademo.domain.Person</class>
+		<class>de.bsailer.jpademo.domain.Adresse</class>
 		<properties>
 			<property name="hibernate.jdbc.lob.non_contextual_creation"
 				value="true" />
@@ -23,7 +23,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.PostgreSQL94Dialect" />
-			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			<property name="hibernate.hbm2ddl.auto" value="none" />
 
 			<!-- Configuring Connection Pool -->
 			<property name="hibernate.c3p0.min_size" value="5" />

@@ -2,9 +2,11 @@ package de.bsailer.jpademo.domain;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,6 +25,9 @@ public class Person {
   private Integer id;
 
   private String nachname;
+
+  @OneToOne(targetEntity = Adresse.class, fetch = FetchType.LAZY)
+  private Adresse adresse;
 
   private String vorname;
 
@@ -60,9 +65,18 @@ public class Person {
     this.geburtsdatum = geburtsdatum;
   }
 
+  public Adresse getAdresse() {
+    return adresse;
+  }
+
+  public void setAdresse(final Adresse adresse) {
+    this.adresse = adresse;
+  }
+
   @Override
   public String toString() {
     return getClass().getName() + " [" + id + ", " + nachname + ", " + vorname + ", " + geburtsdatum
         + "]";
   }
+
 }
